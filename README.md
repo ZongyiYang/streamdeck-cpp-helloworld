@@ -6,6 +6,7 @@
 
 `Hello World` is a plugin that displays "Hello World" on a key. The message displays one digit at a time using the example Timer. The message is configurable through the Property Inspector.
 
+![](plugin.gif)
 
 # Features
 
