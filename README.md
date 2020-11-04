@@ -1,26 +1,23 @@
 
-`CPU` is a sample plugin demonstrating the [Stream Deck SDK](https://developer.elgato.com/documentation/stream-deck/).
+`Hello World` is a sample plugin demonstrating the [Stream Deck SDK](https://developer.elgato.com/documentation/stream-deck/).
 
 
 # Description
 
-`CPU` is a plugin that displays the CPU usage on a key.
+`Hello World` is a plugin that displays "Hello World" on a key.
 
 
 # Features
 
-- code written in C++
-- cross-platform (macOS, Windows)
-- localized
-
-
-![](screenshot.png)
+- C++ code
+- an example tool to repackage and install the plugin
 
 
 # Installation
 
-In the Release folder, you can find the file `com.elgato.cpu.streamDeckPlugin`. If you double-click this file on your machine, Stream Deck will install the plugin.
+In the Release folder, you can find the file `com.elgato.helloworld.streamDeckPlugin`. If you double-click this file on your machine, Stream Deck will install the plugin.
 
+Also provided is a tool `reload.bat` that will repackage and install the plugin.
 
 # Source code
 

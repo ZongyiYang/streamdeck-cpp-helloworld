@@ -2,10 +2,9 @@
 /**
 @file       MyStreamDeckPlugin.cpp
 
-@brief      CPU plugin
+@brief      Demo Hello World
 
-@copyright  (c) 2018, Corsair Memory, Inc.
-			This source code is licensed under the MIT-style license found in the LICENSE file.
+@copyright  (c) 2020, Zongyi Yang
 
 **/
 //==============================================================================
@@ -13,11 +12,7 @@
 #include "MyStreamDeckPlugin.h"
 #include <atomic>
 
-#ifdef __APPLE__
-	#include "macOS/CpuUsageHelper.h"
-#else
-	#include "Windows/CpuUsageHelper.h"
-#endif
+#include "Windows/HelloWorldHelper.h"
 
 #include "Common/ESDConnectionManager.h"
 
@@ -70,8 +65,6 @@ private:
 
 MyStreamDeckPlugin::MyStreamDeckPlugin()
 {
-	mCpuUsageHelper = new CpuUsageHelper();
-	mTimer = new CallBackTimer();
 	mTimer->start(1000, [this]()
 	{
 		this->UpdateTimer();
@@ -83,15 +76,6 @@ MyStreamDeckPlugin::~MyStreamDeckPlugin()
 	if(mTimer != nullptr)
 	{
 		mTimer->stop();
-		
-		delete mTimer;
-		mTimer = nullptr;
-	}
-	
-	if(mCpuUsageHelper != nullptr)
-	{
-		delete mCpuUsageHelper;
-		mCpuUsageHelper = nullptr;
 	}
 }
 
@@ -103,10 +87,9 @@ void MyStreamDeckPlugin::UpdateTimer()
 	if(mConnectionManager != nullptr)
 	{
 		mVisibleContextsMutex.lock();
-		int currentValue = mCpuUsageHelper->GetCurrentCPUValue();
 		for (const std::string& context : mVisibleContexts)
 		{
-			mConnectionManager->SetTitle(std::to_string(currentValue) + "%", context, kESDSDKTarget_HardwareAndSoftware);
+			mConnectionManager->SetTitle(mHelloWorld->genText(), context, kESDSDKTarget_HardwareAndSoftware);
 		}
 		mVisibleContextsMutex.unlock();
 	}

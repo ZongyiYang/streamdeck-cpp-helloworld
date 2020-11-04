@@ -2,10 +2,9 @@
 /**
 @file       MyStreamDeckPlugin.h
 
-@brief      CPU plugin
+@brief      Demo Hello World
 
-@copyright  (c) 2018, Corsair Memory, Inc.
-			This source code is licensed under the MIT-style license found in the LICENSE file.
+@copyright  (c) 2020, Zongyi Yang
 
 **/
 //==============================================================================
@@ -13,7 +12,7 @@
 #include "Common/ESDBasePlugin.h"
 #include <mutex>
 
-class CpuUsageHelper;
+class HelloWorldHelper;
 class CallBackTimer;
 
 class MyStreamDeckPlugin : public ESDBasePlugin
@@ -41,6 +40,6 @@ private:
 	std::mutex mVisibleContextsMutex;
 	std::set<std::string> mVisibleContexts;
 	
-	CpuUsageHelper *mCpuUsageHelper = nullptr;
-	CallBackTimer *mTimer;
+	std::unique_ptr<HelloWorldHelper> mHelloWorld = std::make_unique <HelloWorldHelper>();
+	std::unique_ptr<CallBackTimer> mTimer = std::make_unique <CallBackTimer>();
 };

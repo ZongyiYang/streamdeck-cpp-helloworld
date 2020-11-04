@@ -178,7 +178,7 @@
     <ClInclude Include="..\Common\ESDSDKDefines.h" />
     <ClInclude Include="..\Common\ESDUtilities.h" />
     <ClInclude Include="..\MyStreamDeckPlugin.h" />
-    <ClInclude Include="CpuUsageHelper.h" />
+    <ClInclude Include="HelloWorldHelper.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +212,7 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/FI"pch.h" %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/FI"pch.h" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <ClCompile Include="CpuUsageHelper.cpp">
+    <ClCompile Include="HelloWorldHelper.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/FI pch.h %(AdditionalOptions)</AdditionalOptions>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">/FI pch.h %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>

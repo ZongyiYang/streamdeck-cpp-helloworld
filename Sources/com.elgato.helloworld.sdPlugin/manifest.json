@@ -7,7 +7,7 @@
         {
           "Image": "defaultImage",
           "TitleAlignment": "middle", 
-          "FontSize": "17"
+          "FontSize": "8"
         }
       ], 
       "SupportedInMultiActions": false,
@@ -16,7 +16,7 @@
     }
   ], 
   "SDKVersion": 2,
-  "Author": "Zongyi", 
+  "Author": "Zongyi Yang", 
   "CodePathWin": "helloworld.exe",
   "Description": "A demo StreamDeck Plugin.", 
   "Name": "Hello World", 
