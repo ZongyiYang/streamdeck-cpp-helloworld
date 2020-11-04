@@ -18,6 +18,7 @@
   "SDKVersion": 2,
   "Author": "Zongyi Yang", 
   "CodePathWin": "helloworld.exe",
+  "PropertyInspectorPath": "helloworld_pi.html",
   "Description": "A demo StreamDeck Plugin.", 
   "Name": "Hello World", 
   "Icon": "pluginIcon", 

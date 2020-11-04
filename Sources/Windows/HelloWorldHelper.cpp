@@ -2,7 +2,7 @@
 /**
 @file       HelloWorldHelper.cpp
 
-@brief		Example hello world text generator
+@brief		Example helper function to mirror Elgato's demo
 
 @copyright  (c) 2020, Zongyi Yang.
 
@@ -12,11 +12,7 @@
 #include "pch.h"
 #include "HelloWorldHelper.h"
 
-std::string HelloWorldHelper::genText()
+std::string HelloWorldHelper::genText(const std::string & msg, const uint32_t idx)
 {
-	std::string text = mMsg.substr(0, mIdx);
-	mIdx++;
-	if (mIdx > mMsg.length())
-		mIdx = 0;
-	return text;
+	return msg.substr(0, idx);
 }

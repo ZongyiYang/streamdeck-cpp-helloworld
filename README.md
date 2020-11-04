@@ -1,16 +1,17 @@
 
-`Hello World` is a sample plugin demonstrating the [Stream Deck SDK](https://developer.elgato.com/documentation/stream-deck/).
+`Hello World` is a sample plugin demonstrating the [Stream Deck SDK](https://developer.elgato.com/documentation/stream-deck/) in C++.
 
 
 # Description
 
-`Hello World` is a plugin that displays "Hello World" on a key.
+`Hello World` is a plugin that displays "Hello World" on a key. The message displays one digit at a time using the example Timer. The message is configurable through the Property Inspector.
 
 
 # Features
 
 - C++ code
 - an example tool to repackage and install the plugin
+- an example Property Inspector with a demo on saving per-context settings
 
 
 # Installation

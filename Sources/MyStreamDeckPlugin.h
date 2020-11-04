@@ -11,6 +11,7 @@
 
 #include "Common/ESDBasePlugin.h"
 #include <mutex>
+#include <unordered_map>
 
 class HelloWorldHelper;
 class CallBackTimer;
@@ -38,7 +39,13 @@ private:
 	void UpdateTimer();
 	
 	std::mutex mVisibleContextsMutex;
-	std::set<std::string> mVisibleContexts;
+
+	struct contextData_t
+	{
+		std::string message;
+		uint32_t index;
+	};
+	std::unordered_map<std::string, contextData_t> mVisibleContexts;
 	
 	std::unique_ptr<HelloWorldHelper> mHelloWorld = std::make_unique <HelloWorldHelper>();
 	std::unique_ptr<CallBackTimer> mTimer = std::make_unique <CallBackTimer>();

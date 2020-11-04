@@ -65,7 +65,7 @@ private:
 
 MyStreamDeckPlugin::MyStreamDeckPlugin()
 {
-	mTimer->start(1000, [this]()
+	mTimer->start(500, [this]()
 	{
 		this->UpdateTimer();
 	});
@@ -87,9 +87,15 @@ void MyStreamDeckPlugin::UpdateTimer()
 	if(mConnectionManager != nullptr)
 	{
 		mVisibleContextsMutex.lock();
-		for (const std::string& context : mVisibleContexts)
+		for (auto & context : mVisibleContexts)
 		{
-			mConnectionManager->SetTitle(mHelloWorld->genText(), context, kESDSDKTarget_HardwareAndSoftware);
+			// change the key's text based on the context's message data that we retreived.
+			mConnectionManager->SetTitle(mHelloWorld->genText(context.second.message, context.second.index), context.first, kESDSDKTarget_HardwareAndSoftware);
+
+			// cycle text to look like it's typed
+			context.second.index++;
+			if (context.second.index > context.second.message.length())
+				context.second.index = 0;
 		}
 		mVisibleContextsMutex.unlock();
 	}
@@ -107,9 +113,12 @@ void MyStreamDeckPlugin::KeyUpForAction(const std::string& inAction, const std::
 
 void MyStreamDeckPlugin::WillAppearForAction(const std::string& inAction, const std::string& inContext, const json &inPayload, const std::string& inDeviceID)
 {
-	// Remember the context
+	// On key appearing, remember the context and store the settings
 	mVisibleContextsMutex.lock();
-	mVisibleContexts.insert(inContext);
+	contextData_t data{};
+	if (inPayload.find("settings") != inPayload.end() && inPayload["settings"].find("message") != inPayload["settings"].end())
+		data.message = inPayload["settings"]["message"].get<std::string>();
+	mVisibleContexts.insert({ inContext, data });
 	mVisibleContextsMutex.unlock();
 }
 
@@ -133,5 +142,14 @@ void MyStreamDeckPlugin::DeviceDidDisconnect(const std::string& inDeviceID)
 
 void MyStreamDeckPlugin::SendToPlugin(const std::string& inAction, const std::string& inContext, const json &inPayload, const std::string& inDeviceID)
 {
-	// Nothing to do
+	// on settings change, store the new setting
+	mVisibleContextsMutex.lock();
+	if (mVisibleContexts.find(inContext) != mVisibleContexts.end())
+	{
+		contextData_t data = mVisibleContexts.at(inContext);
+		if (inPayload.find("message") != inPayload.end())
+			data.message = inPayload["message"].get<std::string>();
+		mVisibleContexts.at(inContext) = data;
+	}
+	mVisibleContextsMutex.unlock();
 }

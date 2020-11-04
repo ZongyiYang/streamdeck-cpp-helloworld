@@ -2,7 +2,7 @@
 /**
 @file       HelloWorldHelper.h
 
-@brief		Example hello world text generator
+@brief		Example helper function to mirror Elgato's demo
 
 @copyright  (c) 2020, Zongyi Yang.
 
@@ -15,8 +15,5 @@
 class HelloWorldHelper
 {
 public:
-	std::string genText();
-private:
-	const std::string mMsg = "Hello World";
-	uint32_t mIdx = 0;
+	std::string genText(const std::string& msg, const uint32_t idx);
 };
