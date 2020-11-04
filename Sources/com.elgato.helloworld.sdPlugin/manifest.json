@@ -2,7 +2,7 @@
   "Actions": [
     {
       "Icon": "icon", 
-      "Name": "CPU", 
+      "Name": "Hello World", 
       "States": [
         {
           "Image": "defaultImage",
@@ -11,24 +11,19 @@
         }
       ], 
       "SupportedInMultiActions": false,
-      "Tooltip": "This action displays the CPU usage", 
-      "UUID": "com.elgato.cpu.cpu"
+      "Tooltip": "This is a demo of a StreamDeck Plugin", 
+      "UUID": "com.elgato.helloworld.helloworld"
     }
   ], 
   "SDKVersion": 2,
-  "Author": "Elgato", 
-  "CodePathWin": "cpu.exe", 
-  "CodePathMac": "cpu", 
-  "Description": "Displays the current CPU usage.", 
-  "Name": "CPU", 
+  "Author": "Zongyi", 
+  "CodePathWin": "helloworld.exe",
+  "Description": "A demo StreamDeck Plugin.", 
+  "Name": "Hello World", 
   "Icon": "pluginIcon", 
-  "URL": "https://www.elgato.com/gaming/stream-deck", 
-  "Version": "1.2",
+  "URL": "https://github.com/Z-Y-12345/streamdeck-cpp-helloworld", 
+  "Version": "1.0",
   "OS": [
-    {
-        "Platform": "mac", 
-        "MinimumVersion" : "10.11"
-    },
     {
         "Platform": "windows", 
         "MinimumVersion" : "10"

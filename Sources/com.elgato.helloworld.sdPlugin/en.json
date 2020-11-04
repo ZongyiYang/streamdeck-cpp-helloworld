@@ -1,0 +1,8 @@
+{
+  "Description": "A demo StreamDeck Plugin.", 
+  "Name": "Hello World", 
+  "com.elgato.helloworld.helloworld": {
+    "Name": "Hello World", 
+    "Tooltip": "This is a demo of a StreamDeck Plugin"
+  }
+}
