@@ -10,6 +10,7 @@
 **/
 //==============================================================================
 
+#include "pch.h"
 #include "CpuUsageHelper.h"
 
 CpuUsageHelper::CpuUsageHelper() 
